@@ -8,8 +8,11 @@
 # install dependencies
 npm install
 
+# setup sqlite (firstime only)
+npm run sqlite-build
+
 # serve with hot reload at localhost:9080
-npm run dev
+npm start
 
 # build electron application for production
 npm run build
