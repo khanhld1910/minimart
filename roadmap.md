@@ -1,1 +1,2 @@
 - #1 Re-init projects
+- #2 Setup app structure && skeletons
