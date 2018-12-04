@@ -53,6 +53,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "gentelella": "^1.4.0",
     "sqlite3": "^4.0.4",
     "vue": "^2.5.16",
     "vue-electron": "^1.0.6",

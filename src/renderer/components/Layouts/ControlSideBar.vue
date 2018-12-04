@@ -1,7 +1,5 @@
 <template>
-  <div>
-    Control Sidebar
-  </div>
+  
 </template>
 
 <script>

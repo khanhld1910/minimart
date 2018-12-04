@@ -13,11 +13,32 @@ Vue.config.productionTip = false
 const sqlite3 = require('sqlite3').verbose()
 Vue.prototype.$db = new sqlite3.Database(':memory:')
 
-Vue.mixin(globalMixin)
-/* eslint-disable no-new */
-new Vue({
-  components: { App },
-  router,
-  store,
-  template: '<App/>'
-}).$mount('#app')
+
+const importTemplate = async () => {
+  await import ('gentelella/vendors/bootstrap/dist/css/bootstrap.min.css')
+  await import ('gentelella/vendors/font-awesome/css/font-awesome.min.css')
+  await import ('gentelella/vendors/nprogress/nprogress.css')
+  await import ('gentelella/build/css/custom.min.css')
+  global.$ = global.jQuery = await require('gentelella/vendors/jquery/dist/jquery.min')
+}
+// admin template theme -->
+
+
+importTemplate()
+  .then(() => {
+    // import scripts
+    require('gentelella/vendors/bootstrap/dist/js/bootstrap.min')
+    require('gentelella/vendors/fastclick/lib/fastclick')
+    require('gentelella/build/js/custom.min.js')
+
+    Vue.mixin(globalMixin)
+    /* eslint-disable no-new */
+    new Vue({
+      components: { App },
+      router,
+      store,
+      template: '<App/>'
+    }).$mount('#app')
+
+  })
+

@@ -1,10 +1,10 @@
 <template>
-  <div class="wrapper">
-    <main-header></main-header>
-    <side-bar></side-bar>
-    <app-container></app-container>
-    <control-side-bar></control-side-bar>
-    <main-footer></main-footer>
+  <div class="main_container">
+      <main-header></main-header>
+      <side-bar></side-bar>
+      <app-container></app-container>
+      <!-- <control-side-bar></control-side-bar>-->
+      <main-footer></main-footer> 
   </div>
 </template>
 
@@ -31,7 +31,15 @@
       "main-footer": MainFooter,
     },
   }
+
 </script>
 
 <style lang="scss">
+
+  .main_container{
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+  }
+  
 </style>

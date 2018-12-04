@@ -5,8 +5,20 @@
 </template>
 
 <script>
+
+
+  const applyTheme = () => {
+    $('body').addClass('nav-md')
+    $('#app').addClass("container body")
+  }
+
+
   export default {
-    name: 'minimart'
+    name: 'minimart',
+    mounted() {
+      applyTheme()
+
+    },
   }
 </script>
 
