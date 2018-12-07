@@ -3,17 +3,33 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
+const Dashboard = require('@/components/Dashboard').default
+const Home = require('@/components/Dashboard/Home').default
+const Product = require('@/components/Dashboard/Product').default
+
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'welcome-view',
-      component: require('@/components/WelcomeView').default
+      name: 'dashboard',
+      component: Dashboard,
+      children: [
+        {
+          path: 'home',
+          name: 'home',
+          component: Home,
+        },
+        {
+          path: 'product',
+          name: 'product',
+          component: Product,
+        },
+      ]
     },
     {
-      path: '/inspire',
-      name: 'inspire',
-      component: require('@/components/InspireView').default
+      path: '/login',
+      name: 'login',
+      component: require('@/components/Login').default
     },
     {
       path: '*',
