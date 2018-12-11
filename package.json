@@ -15,7 +15,8 @@
     "pack": "npm run pack:main && npm run pack:renderer",
     "pack:main": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
     "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
-    "postinstall": ""
+    "postinstall": "install-app-deps",
+    "init:sqlite": "npm install --save-dev electron-builder && npm install --save sqlite3 && npm run postinstall"
   },
   "build": {
     "productName": "minimart",
@@ -52,12 +53,13 @@
     }
   },
   "dependencies": {
-    "vue": "^2.4.2",
     "axios": "^0.16.1",
+    "sqlite3": "^4.0.4",
+    "vue": "^2.4.2",
     "vue-electron": "^1.0.6",
     "vue-router": "^2.5.3",
-    "vuex": "^2.3.1",
-    "vuetify": "1.2.5"
+    "vuetify": "1.2.5",
+    "vuex": "^2.3.1"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
@@ -75,9 +77,9 @@
     "del": "^3.0.0",
     "devtron": "^1.4.0",
     "electron": "^1.7.5",
+    "electron-builder": "^19.56.2",
     "electron-debug": "^1.4.0",
     "electron-devtools-installer": "^2.2.0",
-    "electron-builder": "^19.19.1",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.30.1",
