@@ -1,6 +1,6 @@
 <template>
     <!-- left sidebar -->
-    <v-navigation-drawer :mini-variant="config.mini" fixed permanent clipped class="grey lighten-4" app>
+    <v-navigation-drawer :mini-variant="mini" fixed permanent clipped class="grey lighten-4" app>
       <v-toolbar flat>
         <v-list>
           <v-list-tile>
@@ -45,9 +45,7 @@
 <script>
 export default {
   props: {
-    config: {
-      mini: false
-    }
+    "mini": false
   },
   watch: {
     

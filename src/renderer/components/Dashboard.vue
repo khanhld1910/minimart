@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <!-- left sidebar -->
-    <side-menu :config="sideMenu" />
+    <side-menu v-bind="sideMenu" />
 
     <!-- menu topbar -->
     <v-toolbar color="brown" dark absolute clipped-left>
@@ -31,10 +31,12 @@ import TheFooter from "./Layouts/the-footer.vue"
 export default {
   components: {
     "side-menu": SideMenu,
-    "the-footer": TheFooter
+    "the-footer": TheFooter,
   },
   data: () => ({
-    sideMenu: { ...SideMenu.props.config }
+    sideMenu: { 
+      ...SideMenu.props 
+    }
   }),
   mounted() {},
   methods: {
