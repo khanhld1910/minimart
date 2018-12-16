@@ -1,66 +1,55 @@
 <template>
-    <!-- left sidebar -->
-    <v-navigation-drawer :mini-variant="mini" fixed permanent clipped class="grey lighten-4" app>
-      <v-toolbar flat>
-        <v-list>
-          <v-list-tile>
-            <v-list-tile-title class="title">Application</v-list-tile-title>
-          </v-list-tile>
-        </v-list>
-      </v-toolbar>
-
-      <v-divider></v-divider>
-
-      <v-list dense class="pt-0">
-
-        <router-link to="/home" tag="div">
-          <v-list-tile>
-            <v-list-tile-action>
-              <v-icon>dashboard</v-icon>
-            </v-list-tile-action>
-
-            <v-list-tile-content>
-              <v-list-tile-title>Home</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-        </router-link>
-
-        <router-link to="/product" tag="div">
-          <v-list-tile>
-            <v-list-tile-action>
-              <v-icon>dashboard</v-icon>
-            </v-list-tile-action>
-
-            <v-list-tile-content>
-              <v-list-tile-title>Product</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-        </router-link>
-
+  <!-- left sidebar -->
+  <v-navigation-drawer :mini-variant="mini" fixed permanent clipped class="grey lighten-4" app>
+    <v-toolbar flat>
+      <v-list>
+        <v-list-tile>
+          <v-list-tile-title class="title">Application</v-list-tile-title>
+        </v-list-tile>
       </v-list>
-    </v-navigation-drawer>
+    </v-toolbar>
+
+    <v-divider></v-divider>
+
+    <v-list dense class="pt-0">
+      <v-list-tile 
+        v-for="route in routes"
+        :key="route.name"
+        @click="goToPage(route.path)"
+      >
+        <v-list-tile-action>
+          <v-icon>{{ route.icon }}</v-icon>
+        </v-list-tile-action>
+
+        <v-list-tile-content>
+          <v-list-tile-title>{{ route.name }}</v-list-tile-title>
+        </v-list-tile-content>
+      </v-list-tile>
+
+    </v-list>
+  </v-navigation-drawer>
 </template>
 
 
 <script>
+import {routes} from '../../router/menu-routes.js'
+
 export default {
   props: {
-    "mini": false
+    mini: false
   },
-  watch: {
-    
-  },
+  watch: {},
   data: () => ({
+    routes
   }),
-  mounted(){
-    // this.$data.drawer = this.props.menuCfg
-  },
   methods: {
+    goToPage(path) {
+      this.$router.push(path)
+    },
   }
 };
 </script>
 
 
 <style scoped>
-
 </style>

@@ -1,8 +1,25 @@
 <template>
-  <!-- content -->
-  <v-layout justify-center align-center>
-    <p>PRODUCT</p>
-  </v-layout>
+  <v-card tile flat class="page-content">
+    <v-card-title primary-title>
+      <div> 
+        <h6 class="headline mb-0">
+          Product
+          <span class="subheading font-weight-thin">
+            Manage products in your minimart
+          </span>
+        </h6>
+      </div>
+    </v-card-title>
+
+    <div class="card-body" style="height: 80%;">
+
+    </div>
+
+    <v-card-actions>
+      <v-btn flat color="orange">Share</v-btn>
+      <v-btn flat color="orange">Explore</v-btn>
+    </v-card-actions>
+  </v-card>
 </template>
 
 
@@ -13,4 +30,9 @@ export default {
 
 
 <style scoped>
+.page-content {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #E6E9ED;
+}
 </style>

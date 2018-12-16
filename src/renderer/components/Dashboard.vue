@@ -13,7 +13,9 @@
     <!-- content -->
     <v-content>
       <v-container fluid fill-height>
-        <router-view></router-view>
+        <v-layout>
+          <router-view class="page-content"></router-view>
+        </v-layout>
       </v-container>
     </v-content>
 
@@ -48,8 +50,16 @@ export default {
 </script>
 
 
-<style scoped>
+<style lang="scss" scoped>
+.v-content {
+  margin-top: 64px;
+}
 .v-footer {
   padding: 0 10px;
+}
+.page-content {
+  width: 100%;
+  height: 100%;
+  background: transparent;
 }
 </style>

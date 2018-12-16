@@ -6,6 +6,7 @@ Vue.use(Router)
 const Dashboard = require('@/components/Dashboard').default
 const Home = require('@/components/Dashboard/Home').default
 const Product = require('@/components/Dashboard/Product').default
+const Warehouse = require('@/components/Dashboard/Warehouse').default
 
 export default new Router({
   routes: [
@@ -23,6 +24,11 @@ export default new Router({
           path: 'product',
           name: 'product',
           component: Product,
+        },
+        {
+          path: 'warehouse',
+          name: 'warehouse',
+          component: Warehouse,
         },
       ]
     },
