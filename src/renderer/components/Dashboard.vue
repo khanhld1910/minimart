@@ -40,12 +40,7 @@ export default {
       ...SideMenu.props 
     }
   }),
-  mounted() {},
-  methods: {
-    test(e) {
-      console.log(e);
-    }
-  }
+  mounted() {}
 };
 </script>
 

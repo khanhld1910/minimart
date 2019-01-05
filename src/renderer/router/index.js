@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import constants from '../ultis/constants'
+import constants from '../utils/constants'
 
 Vue.use(Router)
 
@@ -54,12 +54,15 @@ let router = new Router({
   ],
 })
 router.beforeEach((to, from, next) => {
-  const user = localStorage.getItem('userInfo') || {}
+  const user = localStorage.getItem('userInfo')
   const isAdminRoute = to.matched.some(route => route.meta.isAdmin)
 
-  if (!user.auth && to.path != '/login') {
-    next('/login')
-  } else if (isAdminRoute && user.role !== constants.USER_ROLES.ADMIN ) {
+  if (!user && to.path != '/login') {
+    next({
+      path: '/login',
+      params: { nextUrl: to.fullPath }
+  })
+  } else if (isAdminRoute && user.user_role !== constants.USER_ROLES.ADMIN ) {
     next(false)
   } else {
     next()

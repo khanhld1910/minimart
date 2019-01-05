@@ -13,13 +13,13 @@ Vue.http = Vue.prototype.$http = axios
 Vue.config.productionTip = false
 
 // -- SQLite setup -->
-const sqlite3 = require('sqlite3').verbose()
-Vue.prototype.$db = new sqlite3.Database(':memory:')
+import initDatabase from './utils/database-init'
+Vue.prototype.$db = initDatabase(__dirname + '/db/app.db')
 
 /* eslint-disable no-new */
 new Vue({
-  components: { App },
-  router,
-  store,
-  template: '<App/>'
+	components: { App },
+	router,
+	store,
+	template: '<App/>',
 }).$mount('#app')

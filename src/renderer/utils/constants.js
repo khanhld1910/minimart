@@ -1,0 +1,12 @@
+const USER_ROLES = {
+	ADMIN: 1,
+	USER: 2,
+}
+
+const PASSWORD_SALT_ROUNDS = 10
+
+
+export default {
+	USER_ROLES,
+	PASSWORD_SALT_ROUNDS
+}
