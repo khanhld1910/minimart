@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <h1>
     LOGIN
-  </div>
+  </h1>
 </template>
 
 <style scoped>

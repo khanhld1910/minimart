@@ -16,7 +16,7 @@
     "pack:main": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
     "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
     "postinstall": "install-app-deps",
-    "init:sqlite": "npm install --save-dev electron-builder && npm install --save sqlite3 && npm run postinstall"
+    "sqlite": "npm install --save-dev electron-builder && npm install --save sqlite3 && npm run postinstall"
   },
   "build": {
     "productName": "minimart",
@@ -54,6 +54,7 @@
   },
   "dependencies": {
     "axios": "^0.16.1",
+    "bcrypt": "^3.0.3",
     "sqlite3": "^4.0.4",
     "vue": "^2.4.2",
     "vue-electron": "^1.0.6",

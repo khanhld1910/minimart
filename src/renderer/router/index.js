@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import constants from '../ultis/constants'
 
 Vue.use(Router)
 
@@ -8,7 +9,7 @@ const Home = require('@/components/Dashboard/Home').default
 const Product = require('@/components/Dashboard/Product').default
 const Warehouse = require('@/components/Dashboard/Warehouse').default
 
-export default new Router({
+let router = new Router({
   routes: [
     {
       path: '/',
@@ -19,27 +20,50 @@ export default new Router({
           path: 'home',
           name: 'home',
           component: Home,
+          meta: {
+            isAdmin: false,
+          },
         },
         {
           path: 'product',
           name: 'product',
           component: Product,
+          meta: {
+            isAdmin: true,
+          },
         },
         {
           path: 'warehouse',
           name: 'warehouse',
           component: Warehouse,
+          meta: {
+            isAdmin: false,
+          },
         },
-      ]
+      ],
     },
     {
       path: '/login',
       name: 'login',
-      component: require('@/components/Login').default
+      component: require('@/components/Login').default,
     },
     {
       path: '*',
-      redirect: '/'
-    }
-  ]
+      redirect: '/',
+    },
+  ],
 })
+router.beforeEach((to, from, next) => {
+  const user = localStorage.getItem('userInfo') || {}
+  const isAdminRoute = to.matched.some(route => route.meta.isAdmin)
+
+  if (!user.auth && to.path != '/login') {
+    next('/login')
+  } else if (isAdminRoute && user.role !== constants.USER_ROLES.ADMIN ) {
+    next(false)
+  } else {
+    next()
+  }
+})
+
+export default router

@@ -2,7 +2,7 @@ export const routes = [
   
   {
     name: 'Home',
-    path: '/',
+    path: '/home',
     icon: 'dashboard'
   },
   {
