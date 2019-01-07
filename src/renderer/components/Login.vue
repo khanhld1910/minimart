@@ -41,6 +41,7 @@
 
 <script>
 import BcryptHelper from "../utils/bcrypt-helper";
+import { userInfo } from 'os';
 export default {
   data: () => ({
     username: "admin",
@@ -55,6 +56,7 @@ export default {
 
       let query = `select * from users where username = ?`
       const values = [username]
+
       
       // first row only
       let user = await this.$db.getItem(query, values)
@@ -68,7 +70,9 @@ export default {
         return alert('wrong username or password!')
       }
 
-      localStorage.setItem('userInfo', user)
+      // localStorage.setItem('userInfo', user)
+      this.$store.commit('USER_LOGIN', user)
+
       this.$router.push('/')
     }
   }

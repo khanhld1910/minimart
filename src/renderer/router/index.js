@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import constants from '../utils/constants'
+import store from '../store'
 
 Vue.use(Router)
 
@@ -8,6 +9,7 @@ const Dashboard = require('@/components/Dashboard').default
 const Home = require('@/components/Dashboard/Home').default
 const Product = require('@/components/Dashboard/Product').default
 const Warehouse = require('@/components/Dashboard/Warehouse').default
+const User = require('@/components/Dashboard/User').default
 
 let router = new Router({
   routes: [
@@ -33,6 +35,14 @@ let router = new Router({
           },
         },
         {
+          path: 'user',
+          name: 'user',
+          component: User,
+          meta: {
+            isAdmin: true,
+          },
+        },
+        {
           path: 'warehouse',
           name: 'warehouse',
           component: Warehouse,
@@ -53,16 +63,18 @@ let router = new Router({
     },
   ],
 })
+
 router.beforeEach((to, from, next) => {
-  const user = localStorage.getItem('userInfo')
+
+  const userInfo = store.getters.userInfo
   const isAdminRoute = to.matched.some(route => route.meta.isAdmin)
 
-  if (!user && to.path != '/login') {
+  if (!userInfo && to.path != '/login') {
     next({
       path: '/login',
       params: { nextUrl: to.fullPath }
   })
-  } else if (isAdminRoute && user.user_role !== constants.USER_ROLES.ADMIN ) {
+  } else if (isAdminRoute && userInfo.user_role !== constants.USER_ROLES.ADMIN ) {
     next(false)
   } else {
     next()

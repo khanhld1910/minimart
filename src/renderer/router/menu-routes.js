@@ -6,13 +6,18 @@ export const routes = [
     icon: 'dashboard'
   },
   {
-    name: 'Product',
+    name: 'Products',
     path: '/product',
     icon: 'dashboard'
   },
   {
-    name: 'Warehouse',
+    name: 'Warehouses',
     path: '/warehouse',
+    icon: 'dashboard'
+  },
+  {
+    name: 'Users',
+    path: '/user',
     icon: 'dashboard'
   },
 
